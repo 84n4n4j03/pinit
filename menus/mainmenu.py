@@ -1,7 +1,7 @@
-from basemenu import BaseMenu
+from menus.basemenu import BaseMenu
 import tkinter as tk
-from configbutton import ConfigButton
-from savebutton import SaveButton
+from buttons.configbutton import ConfigButton
+from buttons.savebutton import SaveButton
 
 class MainMenu(BaseMenu):
     def __init__(self, name, create_empty=False):

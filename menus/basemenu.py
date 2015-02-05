@@ -28,7 +28,6 @@ class BaseMenu(object):
         x = self._parent.winfo_pointerx()
         y = self._parent.winfo_pointery()
         self._parent.geometry("%+d%+d" % (x-10, y+10))
-        #print(self._parent.geometry())
         self._is_opened = True
 
     def close(self):

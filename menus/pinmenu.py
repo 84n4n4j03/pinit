@@ -1,5 +1,5 @@
-from basemenu import BaseMenu
-from configbutton import ConfigButton
+from menus.basemenu import BaseMenu
+from buttons.configbutton import ConfigButton
 
 class PinMenu(BaseMenu):
     def __init__(self, name, create_empty=False):

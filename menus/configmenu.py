@@ -1,8 +1,8 @@
 import tkinter as tk
-from basemenu import BaseMenu
-from menubutton import MenuButton
-from actionbutton import ActionButton
-import pinmenu
+from menus.basemenu import BaseMenu
+from buttons.menubutton import MenuButton
+from buttons.actionbutton import ActionButton
+import menus.pinmenu
 import tkinter.colorchooser as cc
 
 class ConfigMenu(BaseMenu):
@@ -58,7 +58,7 @@ class ConfigMenu(BaseMenu):
     def __create_new_menu_button(self):
         name = self.__entries["menu_name_entry"].get()
         color = self.__entries["menu_color_btn"]["bg"]
-        self.__pinMenu.add_button(MenuButton(name, pinmenu.PinMenu(name), color))
+        self.__pinMenu.add_button(MenuButton(name, menus.pinmenu.PinMenu(name), color))
 
     def __create_new_action_button(self):
         name = self.__entries["action_name_entry"].get()

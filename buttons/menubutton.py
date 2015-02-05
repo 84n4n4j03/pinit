@@ -1,4 +1,4 @@
-from basebutton import BaseButton
+from buttons.basebutton import BaseButton
 
 class MenuButton(BaseButton):
 
@@ -7,7 +7,6 @@ class MenuButton(BaseButton):
         self.__submenu = submenu
 
     def on_clicked(self):
-        print("open menu:", self.__submenu)
         self.__submenu.open_as_window()
 
     def on_mouse_entered(self, event):

@@ -1,10 +1,9 @@
-import pprint
-import mainmenu
-import pinmenu
-import configbutton
-import savebutton
-import actionbutton
-import menubutton
+import menus.mainmenu
+import menus.pinmenu
+import buttons.configbutton
+import buttons.savebutton
+import buttons.actionbutton
+import buttons.menubutton
 import json
 
 class StorageManager(object):
@@ -21,10 +20,9 @@ class StorageManager(object):
             print("unable to load saved layout")
             return None
         d = json.loads(js)
-        #print(d)
         if not "mainmenu.MainMenu" in d["type"]:
             raise StorageManagerException("no MainMenu found in toplevel")
-        mainMenu = mainmenu.MainMenu(d["name"], create_empty=True)
+        mainMenu = menus.mainmenu.MainMenu(d["name"], create_empty=True)
         for button in d["buttons"]:
             self.__add_button(mainMenu, button)
         return mainMenu
@@ -37,20 +35,20 @@ class StorageManager(object):
 
     def __add_button(self, menu, button):
         if "configbutton.ConfigButton" in button["type"]:
-            menu.add_button(configbutton.ConfigButton(menu, button["color"]))
+            menu.add_button(buttons.configbutton.ConfigButton(menu, button["color"]))
         elif "savebutton.SaveButton" in button["type"]:
-            menu.add_button(savebutton.SaveButton(menu, button["color"]))
+            menu.add_button(buttons.savebutton.SaveButton(menu, button["color"]))
         elif "actionbutton.ActionButton" in button["type"]:
-            menu.add_button(actionbutton.ActionButton(button["name"],
+            menu.add_button(buttons.actionbutton.ActionButton(button["name"],
                                                 button["cmd"], button["color"]))
         elif "menubutton.MenuButton" in button["type"]:
-            menu.add_button(menubutton.MenuButton(button["name"],
+            menu.add_button(buttons.menubutton.MenuButton(button["name"],
                     self.__create_submenu(button["submenu"]), button["color"]))
 
     def __create_submenu(self, submenu):
         if not "pinmenu.PinMenu" in submenu["type"]:
             raise StorageManagerException("no PinMenu found as submenu")
-        pinMenu = pinmenu.PinMenu(submenu["name"], create_empty=True)
+        pinMenu = menus.pinmenu.PinMenu(submenu["name"], create_empty=True)
         for button in submenu["buttons"]:
             self.__add_button(pinMenu, button)
         return pinMenu

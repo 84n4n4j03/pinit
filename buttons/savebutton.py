@@ -1,5 +1,5 @@
-from basebutton import BaseButton
-from storagemanager import StorageManager
+from buttons.basebutton import BaseButton
+from misc.storagemanager import StorageManager
 
 
 class SaveButton(BaseButton):

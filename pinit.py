@@ -1,11 +1,11 @@
-from pinmenu import PinMenu
-from basebutton import BaseButton
-from actionbutton import ActionButton
-from menubutton import MenuButton
-from mainmenu import MainMenu
-from savebutton import SaveButton
+from menus.pinmenu import PinMenu
+from buttons.basebutton import BaseButton
+from buttons.actionbutton import ActionButton
+from buttons.menubutton import MenuButton
+from menus.mainmenu import MainMenu
+from buttons.savebutton import SaveButton
 import json
-from storagemanager import StorageManager
+from misc.storagemanager import StorageManager
 
 
 
