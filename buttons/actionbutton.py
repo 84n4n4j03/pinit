@@ -1,5 +1,6 @@
 from buttons.basebutton import BaseButton
 import subprocess as sp
+import menus.argumentmenu
 
 class ActionButton(BaseButton):
 
@@ -11,10 +12,14 @@ class ActionButton(BaseButton):
         if not self.__cmd:
             print("no cmd set for:", self._name)
             return
-        sp.call(self.__cmd, shell=True)
+        if "$" in self.__cmd:
+            am = menus.argumentmenu.ArgumentMenu(self.__cmd)
+            am.open_as_window()
+        else:
+            print("\ncmd: " + self.__cmd + "\n>>>>>>>>>>>>>>>>>>")
+            sp.call(self.__cmd, shell=True)
 
     def get_storage_description(self):
         d = BaseButton.get_storage_description(self)
         d["cmd"] = self.__cmd
         return d
-
