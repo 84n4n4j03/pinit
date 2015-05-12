@@ -27,7 +27,7 @@ class ConfigMenu(BaseMenu):
         btn.grid(row=1, column=1)
 
     def __paint_action_panel(self):
-        lf = tk.LabelFrame(self._frame, text="Create new Action Button")
+        lf = tk.LabelFrame(self._frame, text="Create new Action Button  (use '$name' as placeholder)")
         lf.pack(side="top")
         tk.Label(lf, text="name:").grid(row=0, column=0)
         entry = tk.Entry(lf, width=50)
