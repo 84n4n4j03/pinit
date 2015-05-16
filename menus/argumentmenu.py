@@ -1,6 +1,7 @@
 import tkinter as tk
 from menus.basemenu import BaseMenu
 import subprocess as sp
+from misc.windowmgr import WindowMgr
 
 class ArgumentMenu(BaseMenu):
     def __init__(self, cmd):
@@ -35,6 +36,7 @@ class ArgumentMenu(BaseMenu):
         cmd = self.__cmd
         for argument, entry in self.__arguments.items():
             cmd = cmd.replace(argument, entry.get())
+        WindowMgr().set_cmd_window_to_foreground()
         print("\ncmd: " + cmd + "\n>>>>>>>>>>>>>>>>>>")
         sp.call(cmd, shell=True)
 

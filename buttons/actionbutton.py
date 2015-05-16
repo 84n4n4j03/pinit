@@ -1,6 +1,7 @@
 from buttons.basebutton import BaseButton
 import subprocess as sp
 import menus.argumentmenu
+from misc.windowmgr import WindowMgr
 
 class ActionButton(BaseButton):
 
@@ -16,6 +17,7 @@ class ActionButton(BaseButton):
             am = menus.argumentmenu.ArgumentMenu(self.__cmd)
             am.open_as_window()
         else:
+            WindowMgr().set_cmd_window_to_foreground()
             print("\ncmd: " + self.__cmd + "\n>>>>>>>>>>>>>>>>>>")
             sp.call(self.__cmd, shell=True)
 

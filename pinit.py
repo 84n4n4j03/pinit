@@ -6,6 +6,7 @@ from menus.mainmenu import MainMenu
 from buttons.savebutton import SaveButton
 import json
 from misc.storagemanager import StorageManager
+from misc.windowmgr import WindowMgr
 
 
 
@@ -15,9 +16,12 @@ class PinIt(object):
         if not self.__mainMenu:
             self.__mainMenu = MainMenu("mainMenu")
         self.__mainMenu.open_as_window()
+        self.__windowMgr = WindowMgr()
 
 
     def run(self):
+        print("PinIt by Johannes Vogel")
+        print("visit http://84n4n4j03.github.io/pinit/")
         self.__mainMenu.run()
 
 def run():
