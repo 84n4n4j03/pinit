@@ -14,6 +14,7 @@ class PinIt(object):
     def __init__(self):
         self.__mainMenu = StorageManager().load()
         if not self.__mainMenu:
+            print("create new")
             self.__mainMenu = MainMenu("mainMenu")
         self.__mainMenu.open_as_window()
         self.__windowMgr = WindowMgr()
@@ -21,7 +22,7 @@ class PinIt(object):
 
     def run(self):
         print("PinIt by Johannes Vogel")
-        print("visit http://84n4n4j03.github.io/pinit/")
+        print("visit https://github.com/84n4n4j03/pinit")
         self.__mainMenu.run()
 
 def run():

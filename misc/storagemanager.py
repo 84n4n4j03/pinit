@@ -7,7 +7,7 @@ import buttons.menubutton
 import json
 
 class StorageManager(object):
-    FILENAME = "savedLayout.js"
+    FILENAME = "../savedLayout.js"
 
     def __init__(self):
         pass
@@ -28,6 +28,7 @@ class StorageManager(object):
         return mainMenu
 
     def save(self, mainMenu):
+        print("store to: " + StorageManager.FILENAME)
         s = json.dumps(mainMenu.get_storage_description(), sort_keys=True, indent=4)
         with open(StorageManager.FILENAME, "w") as f:
             f.write(s)
