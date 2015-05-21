@@ -7,12 +7,12 @@ from buttons.savebutton import SaveButton
 import json
 from misc.storagemanager import StorageManager
 from misc.windowmgr import WindowMgr
-
+import argparse
 
 
 class PinIt(object):
-    def __init__(self):
-        self.__mainMenu = StorageManager().load()
+    def __init__(self, layout_file):
+        self.__mainMenu = StorageManager(layout_file).load()
         if not self.__mainMenu:
             print("create new")
             self.__mainMenu = MainMenu("mainMenu")
@@ -26,7 +26,18 @@ class PinIt(object):
         self.__mainMenu.run()
 
 def run():
-    pinIt = PinIt()
+    description="""
+Lightweight GUI to simply create buttons to fire
+commands, programms, web-pages, ...
+Easily organize these buttons in submenus and
+pin them wherever needed on the screen.
+They're always on top.
+"""
+    parser = argparse.ArgumentParser(description=description)
+    parser.add_argument('--layout', default='../layout.js',
+                    help='specify a json layout file (default: ../layout.js)')
+    args = parser.parse_args()
+    pinIt = PinIt(args.layout)
     pinIt.run()
 
 if __name__ == "__main__":

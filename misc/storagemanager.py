@@ -7,10 +7,14 @@ import buttons.menubutton
 import json
 
 class StorageManager(object):
-    FILENAME = "../savedLayout.js"
+    FILENAME = None
 
-    def __init__(self):
-        pass
+    def __init__(self, layout_file=None):
+        if layout_file:
+            StorageManager.FILENAME = layout_file
+        if not StorageManager.FILENAME:
+            raise StorageManagerException("no layout file specified")
+
 
     def load(self):
         try:

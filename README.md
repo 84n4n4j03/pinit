@@ -49,12 +49,24 @@ quickly add, modify, and delete stuff.
 You could even remove the configuration and storage capablities this way to
 write protect a menu.
 
+If you want PinIt to use another layout file you can specify it on start, like
+so: `python pinit --layout path/to/yourFile.js`.
+This way you can also open the exampleLayout.js stored in the root directory of
+PinIt.
+
 ### Parameter
 To use an action with different parameter simply add a "$" in front of a word
 in the command. If you click the button another menu shows up to ask you for
 the actual value. E.g.: `git checkout $branch` will ask you for the value
 of `$branch`. Of course you can do this for multiple parameters.
 
+### Blocking commands
+Some calls may block the further execution until they're finished. E.g. a
+command `notepad aFile.txt` opens aFile.txt in notepad but the button stucks in
+the pressed state until notepad is closed. Sometimes this is a desired
+behaviour but if not you could try the command "start" before your actual call.
+So the example before would end up in `start notepad aFile.txt`. This only
+triggers the command and directly returns.
 
 ## Limitations
 I needed it on Windows machines, and some code related to window focussing
