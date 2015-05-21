@@ -3,7 +3,6 @@ from misc.storagemanager import StorageManager
 
 
 class SaveButton(BaseButton):
-    FILENAME = "savedLayout.pin"
     def __init__(self, mainMenu, color="thistle"):
         BaseButton.__init__(self, "save", color)
         self.__mainMenu = mainMenu

@@ -4,10 +4,11 @@ import subprocess as sp
 from misc.windowmgr import WindowMgr
 
 class ArgumentMenu(BaseMenu):
-    def __init__(self, cmd):
+    def __init__(self, argumentString, button):
         BaseMenu.__init__(self, "specify arguments")
-        self.__cmd = cmd
-        self.__argument_names = [argument for argument in cmd.split()
+        self.__argumentString = argumentString
+        self.__button = button
+        self.__argument_names = [argument for argument in argumentString.split()
                                             if argument.startswith("$")]
         self.__arguments = {}
         #print("self.__arguments", self.__arguments)
@@ -23,7 +24,7 @@ class ArgumentMenu(BaseMenu):
         btn.grid(row=row_number, column=0, columnspan=2)
 
     def __paint(self):
-        lf = tk.LabelFrame(self._frame, text=self.__cmd)
+        lf = tk.LabelFrame(self._frame, text=self.__argumentString)
         self._parent.bind('<Return>', self.__execute)
         lf.pack(side="top")
         row_number = 0
@@ -33,12 +34,10 @@ class ArgumentMenu(BaseMenu):
         self.__paint_execute_button(lf, row_number)
 
     def __execute(self, event=None):
-        cmd = self.__cmd
+        argString = self.__argumentString
         for argument, entry in self.__arguments.items():
-            cmd = cmd.replace(argument, entry.get())
-        WindowMgr().set_cmd_window_to_foreground()
-        print("\ncmd: " + cmd + "\n>>>>>>>>>>>>>>>>>>")
-        sp.call(cmd, shell=True)
+            argString = argString.replace(argument, entry.get())
+        self.__button.execute(argString)
 
     def open_as_window(self):
         if self.is_opened():

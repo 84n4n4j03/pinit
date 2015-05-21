@@ -3,6 +3,7 @@ import subprocess as sp
 import menus.argumentmenu
 from misc.windowmgr import WindowMgr
 
+
 class ActionButton(BaseButton):
 
     def __init__(self, name, cmd=None, color="thistle"):
@@ -14,14 +15,17 @@ class ActionButton(BaseButton):
             print("no cmd set for:", self._name)
             return
         if "$" in self.__cmd:
-            am = menus.argumentmenu.ArgumentMenu(self.__cmd)
+            am = menus.argumentmenu.ArgumentMenu(self.__cmd, self)
             am.open_as_window()
         else:
-            WindowMgr().set_cmd_window_to_foreground()
-            print("\ncmd: " + self.__cmd + "\n>>>>>>>>>>>>>>>>>>")
-            sp.call(self.__cmd, shell=True)
+            self.execute(self.__cmd)
 
     def get_storage_description(self):
         d = BaseButton.get_storage_description(self)
         d["cmd"] = self.__cmd
         return d
+
+    def execute(self, cmd):
+        WindowMgr().set_cmd_window_to_foreground()
+        print("\ncmd: " + cmd + "\n>>>>>>>>>>>>>>>>>>")
+        sp.call(cmd, shell=True)
