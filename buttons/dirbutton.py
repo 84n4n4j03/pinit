@@ -30,6 +30,7 @@ class DirButton(BaseButton):
     def execute(self, directory):
         WindowMgr().set_cmd_window_to_foreground()
         directory = directory.replace("§pinit", self.__pinit_root_dir)
+        directory = os.path.expandvars(directory)
         print("\ndirectory: " + directory + "\n>>>>>>>>>>>>>>>>>>")
         os.chdir(directory)
         print("currentDir: " + os.getcwd())

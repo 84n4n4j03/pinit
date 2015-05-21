@@ -3,6 +3,7 @@ import menus.pinmenu
 import buttons.configbutton
 import buttons.savebutton
 import buttons.actionbutton
+import buttons.dirbutton
 import buttons.menubutton
 import json
 
@@ -46,6 +47,9 @@ class StorageManager(object):
         elif "actionbutton.ActionButton" in button["type"]:
             menu.add_button(buttons.actionbutton.ActionButton(button["name"],
                                                 button["cmd"], button["color"]))
+        elif "dirbutton.DirButton" in button["type"]:
+            menu.add_button(buttons.dirbutton.DirButton(button["name"],
+                                        button["directory"], button["color"]))
         elif "menubutton.MenuButton" in button["type"]:
             menu.add_button(buttons.menubutton.MenuButton(button["name"],
                     self.__create_submenu(button["submenu"]), button["color"]))

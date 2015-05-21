@@ -9,13 +9,17 @@ It consists of only two kind of things:
 * menus
 * buttons
 
-A button can do only two things:
+A button can do only three things:
 * open another menu
 * do an action
+* change the current working directory
 
 An action is a command executed on the owning command line.
 This way you can hook programs, apps, scripts, tools, complicated calls,
 browser+webpages ... whatever that can be executed on the command line.
+(Using the "cd" command to change a directory will not work, because python
+executes the action command in a subprocess, hence the extra button type:
+directory)
 
 The layout can be extended with a few clicks, with further nested submenus
 and/or actions, be stored or even be scripted.
@@ -67,6 +71,11 @@ the pressed state until notepad is closed. Sometimes this is a desired
 behaviour but if not you could try the command "start" before your actual call.
 So the example before would end up in `start notepad aFile.txt`. This only
 triggers the command and directly returns.
+
+### Directory
+The `§pinit` variable to contains the root directory of your pinit repo, so you
+can use it to navigate relatively to it. Of course you can use environment
+variables too.
 
 ## Limitations
 I needed it on Windows machines, and some code related to window focussing
