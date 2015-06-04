@@ -7,6 +7,7 @@ class SaveButton(BaseButton):
         BaseButton.__init__(self, "save", color)
         self.__mainMenu = mainMenu
         self.__storageManager = StorageManager()
+        self.add_description("saves current setup to: " + StorageManager.FILENAME)
 
     def on_clicked(self):
         self.__storageManager.save(self.__mainMenu)

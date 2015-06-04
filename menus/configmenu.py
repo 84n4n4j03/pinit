@@ -28,7 +28,7 @@ class ConfigMenu(BaseMenu):
         btn.grid(row=1, column=1)
 
     def __paint_action_panel(self):
-        lf = tk.LabelFrame(self._frame, text="Create new Action Button  (use '$name' as placeholders)")
+        lf = tk.LabelFrame(self._frame, text="Create new Action Button")
         lf.pack(side="top")
         tk.Label(lf, text="name:").grid(row=0, column=0)
         entry = tk.Entry(lf, width=50)
@@ -46,7 +46,7 @@ class ConfigMenu(BaseMenu):
         btn.grid(row=2, column=1)
 
     def __paint_dir_panel(self):
-        lf = tk.LabelFrame(self._frame, text="Create new Directory Button  ('$xxx' as placeholders, §pinit is root dir)")
+        lf = tk.LabelFrame(self._frame, text="Create new Directory Button")
         lf.pack(side="top")
         tk.Label(lf, text="name:").grid(row=0, column=0)
         entry = tk.Entry(lf, width=50)
@@ -75,6 +75,8 @@ class ConfigMenu(BaseMenu):
 
 
     def __paint(self):
+        lbl = tk.Label(self._frame, text="Right click config button for more info")
+        lbl.pack(side="top")
         self.__paint_menu_panel()
         self.__paint_action_panel()
         self.__paint_dir_panel()

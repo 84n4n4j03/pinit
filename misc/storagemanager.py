@@ -38,7 +38,6 @@ class StorageManager(object):
         with open(StorageManager.FILENAME, "w") as f:
             f.write(s)
 
-
     def __add_button(self, menu, button):
         if "configbutton.ConfigButton" in button["type"]:
             menu.add_button(buttons.configbutton.ConfigButton(menu, button["color"]))
@@ -53,6 +52,9 @@ class StorageManager(object):
         elif "menubutton.MenuButton" in button["type"]:
             menu.add_button(buttons.menubutton.MenuButton(button["name"],
                     self.__create_submenu(button["submenu"]), button["color"]))
+        else:
+            raise StorageManagerException("unknown buttontype")
+        menu.get_buttons()[-1].add_description(button["description"])
 
     def __create_submenu(self, submenu):
         if not "pinmenu.PinMenu" in submenu["type"]:

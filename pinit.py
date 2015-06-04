@@ -8,6 +8,7 @@ import json
 from misc.storagemanager import StorageManager
 from misc.windowmgr import WindowMgr
 import argparse
+import os
 
 
 class PinIt(object):
@@ -18,6 +19,8 @@ class PinIt(object):
             self.__mainMenu = MainMenu("mainMenu")
         self.__mainMenu.open_as_window()
         self.__windowMgr = WindowMgr()
+        os.environ["PINIT_ROOT_DIR"] = os.path.dirname(os.path.realpath(__file__))
+        os.environ["PINIT_LAYOUT_DIR"] = os.path.dirname(os.path.realpath(layout_file))
 
 
     def run(self):
@@ -34,7 +37,7 @@ pin them wherever needed on the screen.
 They're always on top.
 """
     parser = argparse.ArgumentParser(description=description)
-    parser.add_argument('--layout', default='../layout.js',
+    parser.add_argument('-l', '--layout', default='../layout.js',
                     help='specify a json layout file (default: ../layout.js)')
     args = parser.parse_args()
     pinIt = PinIt(args.layout)

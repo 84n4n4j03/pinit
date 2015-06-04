@@ -87,3 +87,6 @@ class BaseMenu(object):
         for button in self.__buttons:
             d["buttons"].append(button.get_storage_description())
         return d
+
+    def get_buttons(self):
+        return self.__buttons

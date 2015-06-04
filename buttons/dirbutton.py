@@ -16,7 +16,7 @@ class DirButton(BaseButton):
         if not self.__directory:
             print("no directory set for:", self._name)
             return
-        if "$" in self.__directory:
+        if "$(" in self.__directory:
             am = menus.argumentmenu.ArgumentMenu(self.__directory, self)
             am.open_as_window()
         else:
@@ -29,7 +29,6 @@ class DirButton(BaseButton):
 
     def execute(self, directory):
         WindowMgr().set_cmd_window_to_foreground()
-        directory = directory.replace("§pinit", self.__pinit_root_dir)
         directory = os.path.expandvars(directory)
         print("\ndirectory: " + directory + "\n>>>>>>>>>>>>>>>>>>")
         os.chdir(directory)

@@ -59,10 +59,13 @@ This way you can also open the exampleLayout.js stored in the root directory of
 PinIt.
 
 ### Parameter
-To use an action with different parameter simply add a "$" in front of a word
-in the command. If you click the button another menu shows up to ask you for
-the actual value. E.g.: `git checkout $branch` will ask you for the value
-of `$branch`. Of course you can do this for multiple parameters.
+To use an action or a directory button with dynamic parameters simply wrap a
+word or a part of it in "$(...)". If you click the button another menu shows up
+to ask you for
+the actual value. E.g.: `git checkout $(branch)` will ask you for the value
+of `branch`. Of course you can do this for more parameters and parts of
+parameters. E.g. `git checkout $(anyFlag) feature/issue_$(issueNumber)` asks you
+for `anyFlag` and `issueNumber`.
 
 ### Blocking commands
 Some calls may block the further execution until they're finished. E.g. a
@@ -73,9 +76,12 @@ So the example before would end up in `start notepad aFile.txt`. This only
 triggers the command and directly returns.
 
 ### Directory
-The `§pinit` variable to contains the root directory of your pinit repo, so you
-can use it to navigate relatively to it. Of course you can use environment
-variables too.
+You can use environment variables to navigate relatively to them (in windows:
+%VARIABLE%). You can refer to environment variables set before startup,
+additionally two further variables are set during startup for this pinit
+session:
+* PINIT_ROOT_DIR - root directory of pinit
+* PINIT_LAYOUT_DIR - directory of the used layout file
 
 ## Limitations
 I needed it on Windows machines, and some code related to window focussing

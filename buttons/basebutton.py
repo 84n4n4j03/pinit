@@ -1,4 +1,5 @@
 import tkinter as tk
+from misc.windowmgr import WindowMgr
 
 class BaseButton(object):
     def __init__(self, name, color=None):
@@ -25,12 +26,22 @@ class BaseButton(object):
         self._tk_button.pack(side="left")
         self._tk_button.bind("<Enter>", self.on_mouse_entered)
         self._tk_button.bind("<Leave>", self.on_mouse_left)
+        self._tk_button.bind("<Button-3>", self.on_right_clicked)
+
 
     def add_image(self, image):
         pass
 
     def on_clicked(self):
         pass
+
+    def on_right_clicked(self, event):
+        WindowMgr().set_cmd_window_to_foreground()
+        print("\nbutton '" + self._name + "':")
+        if not self.__description:
+            print("no description found (add it to your layout.js file)\n")
+        else:
+            print(self.__description + "\n")
 
     def on_mouse_entered(self, event):
         pass

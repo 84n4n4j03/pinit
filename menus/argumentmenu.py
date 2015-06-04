@@ -8,10 +8,10 @@ class ArgumentMenu(BaseMenu):
         BaseMenu.__init__(self, "specify arguments")
         self.__argumentString = argumentString
         self.__button = button
-        self.__argument_names = [argument for argument in argumentString.split()
-                                            if argument.startswith("$")]
+        self.__argument_names = [argument.split(")")[0] for argument in argumentString.split("$(")
+                                            if ")" in argument]
         self.__arguments = {}
-        #print("self.__arguments", self.__arguments)
+        #print("self.__argument_names", self.__argument_names)
 
     def __paint_argument_row(self, lf, argument, row_number):
         tk.Label(lf, text=argument).grid(row=row_number, column=0)
@@ -36,7 +36,7 @@ class ArgumentMenu(BaseMenu):
     def __execute(self, event=None):
         argString = self.__argumentString
         for argument, entry in self.__arguments.items():
-            argString = argString.replace(argument, entry.get())
+            argString = argString.replace("$("+argument+")", entry.get())
         self.__button.execute(argString)
 
     def open_as_window(self):

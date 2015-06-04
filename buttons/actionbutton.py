@@ -14,7 +14,7 @@ class ActionButton(BaseButton):
         if not self.__cmd:
             print("no cmd set for:", self._name)
             return
-        if "$" in self.__cmd:
+        if "$(" in self.__cmd:
             am = menus.argumentmenu.ArgumentMenu(self.__cmd, self)
             am.open_as_window()
         else:
