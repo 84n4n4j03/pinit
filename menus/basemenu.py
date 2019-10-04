@@ -46,6 +46,7 @@ class BaseMenu(object):
             button.paint(self._frame)
 
     def open_as_window(self):
+        self.close()
         self.__is_pinned = True
         self.__paint(True)
 
@@ -90,3 +91,4 @@ class BaseMenu(object):
 
     def get_buttons(self):
         return self.__buttons
+

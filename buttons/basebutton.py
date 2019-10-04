@@ -1,5 +1,5 @@
 import tkinter as tk
-from misc.windowmgr import WindowMgr
+from misc.windowmgr_gtk import WindowMgr
 
 class BaseButton(object):
     def __init__(self, name, color=None):

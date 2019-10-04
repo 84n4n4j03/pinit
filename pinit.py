@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+
 from menus.pinmenu import PinMenu
 from buttons.basebutton import BaseButton
 from buttons.actionbutton import ActionButton
@@ -6,7 +8,7 @@ from menus.mainmenu import MainMenu
 from buttons.savebutton import SaveButton
 import json
 from misc.storagemanager import StorageManager
-from misc.windowmgr import WindowMgr
+from misc.windowmgr_gtk import WindowMgr
 import argparse
 import os
 

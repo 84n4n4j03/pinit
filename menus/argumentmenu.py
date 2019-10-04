@@ -1,7 +1,6 @@
 import tkinter as tk
 from menus.basemenu import BaseMenu
 import subprocess as sp
-from misc.windowmgr import WindowMgr
 
 class ArgumentMenu(BaseMenu):
     def __init__(self, argumentString, button):

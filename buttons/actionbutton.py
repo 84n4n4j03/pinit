@@ -1,7 +1,7 @@
 from buttons.basebutton import BaseButton
 import subprocess as sp
 import menus.argumentmenu
-from misc.windowmgr import WindowMgr
+from misc.windowmgr_gtk import WindowMgr
 
 
 class ActionButton(BaseButton):
